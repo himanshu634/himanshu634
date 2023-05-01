@@ -6,8 +6,8 @@ This is Himanshu. Currently, I am persuing computer engineering 3<sup>rd</sup> y
 ## Languages I know :
 <li>Java</li>
 <li>Dart</li>
-<!--<li>Python</li>
-<li>C</li> -->
+<li>Go</li>
+<!--<li>C</li> -->
 </br>
 
 
