@@ -1,4 +1,8 @@
 <div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Himanshu&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=ffffff" />
+</div>
+
+<div align="center">
 
 # 👋 Hi there, I'm Himanshu!
 
@@ -10,32 +14,48 @@
 
 ## 🚀 About Me
 
-```yaml
-himanshu634:
-  pronouns: "he/him"
-  code: [JavaScript, TypeScript, Python, Java, C++]
-  askMeAbout: ["web dev", "tech", "app dev", "open source"]
-  technologies:
-    frontEnd:
-      js: ["React", "Vue", "Next.js"]
-      css: ["Tailwind", "Bootstrap", "Sass"]
-    backEnd:
-      js: ["Node.js", "Express"]
-      python: ["Django", "FastAPI"]
-    databases: ["MongoDB", "PostgreSQL", "MySQL"]
-    devOps: ["Docker", "AWS", "Firebase"]
-    tools: ["Git", "VS Code", "Figma"]
-  currentFocus: "Building amazing web experiences"
-  funFact: "I debug with console.log() and I'm proud of it!"
-```
+<table>
+<tr>
+<td>
+
+### 👨‍💻 Quick Facts
+- 📍 **Pronouns:** he/him
+- 💻 **Languages:** JavaScript, TypeScript, Python, Java, C++
+- 💬 **Ask me about:** Web Dev, Tech, App Dev, Open Source
+- 🎯 **Current Focus:** Building amazing web experiences
+- 🐛 **Fun Fact:** I debug with console.log() and I'm proud of it!
+
+</td>
+<td>
+
+### 🛠️ Technologies
+
+**Frontend:**
+- ⚛️ React, Vue, Next.js
+- 🎨 Tailwind, Bootstrap, Sass
+
+**Backend:**
+- 🟢 Node.js, Express
+- 🐍 Django, FastAPI
+
+**Database & Cloud:**
+- 📊 MongoDB, PostgreSQL, MySQL
+- ☁️ Docker, AWS, Firebase
+
+**Tools:**
+- 🔧 Git, VS Code, Figma
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 📊 GitHub Stats
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=himanshu634&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=himanshu634&layout=compact&langs_count=8&theme=tokyonight"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=himanshu634&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" alt="GitHub Stats"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=himanshu634&layout=compact&langs_count=8&theme=tokyonight" alt="Top Languages"/>
 </div>
 
 <div align="center">
