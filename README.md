@@ -1,8 +1,8 @@
 ### Hii, I am Himanshu. 👋
 
-An engineer, who mostly codes front-end but will soon move to rust. 
+An engineer, who mostly codes front-end but loves to build things from scratch. 
 
-To coneect with me,
+To conect with me,
 
 [Twitter](https://x.com/himanshu_btw)<br/>
 [Email](mailto:himanshumendapra@gmail.com)
