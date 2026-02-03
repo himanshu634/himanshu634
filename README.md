@@ -1,6 +1,6 @@
 ### Hii, I am Himanshu. 👋
 
-An engineer, who mostly codes front-end but loves to build things from scratch. 
+An engineer, who mostly codes front-end and loves to build things from scratch.
 
 To conect with me,
 
