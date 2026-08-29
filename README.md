@@ -1,6 +1,6 @@
 # Hii, I am Himanshu! 👋
 
-**Full-Stack & Systems Engineer | Building in Public**
+**Full-Stack & AI Systems Engineer | Building in Public**
 
 I'm a software engineer based in Ahmedabad, India, currently working at Bull-Agritech. While my roots are in crafting exceptional front-end experiences, my work extends deeply into backend architecture, systems programming with Rust, and building AI-driven applications. 
 
