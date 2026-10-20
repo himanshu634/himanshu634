@@ -11,7 +11,7 @@ HTML comments like this one do not render on GitHub, so you can leave them in.
 
 **Full-stack & AI engineer building software for money and markets.**
 
-I'm a software engineer in Ahmedabad, India. I started on the frontend and kept following problems downward: state management, then backend and data, then Rust, and now LLM agents. Most of what I build ends up being about money or markets. A banking ledger I wrote to learn Rust, an open-source Splitwise alternative, the commodity supply-chain platform I work on at Bull Agritech, and now Maester, a portfolio risk platform.
+Software engineer in Ahmedabad, India. I started on the frontend and worked down through backend, data and Rust. Now I build LLM agents, mostly for finance and markets.
 
 ## Now
 
