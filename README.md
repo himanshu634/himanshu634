@@ -30,11 +30,11 @@ The thread through all of it: agents you can trust with real data.
 - **[Insider](https://github.com/himanshu634/Insider)**: no official source publishes live commodity prices. They move through commodity traders' WhatsApp groups, as scattered Gujarati and English messages. Insider reads those groups and turns them into clean, comparable mandi prices and a daily brief, so a buyer can see the price gap between mandis and act on the arbitrage first.
 - **Claude Code** is how I build: skill libraries, reviewer subagents, hooks. Side quest: **Tank**, a macOS menu bar app that moves Claude Code sessions between accounts (private for now).
 
-## 📚 Learning now
+## 🛠️ What I go deep on
 
-- **Agents in production for long-running tasks.** Durable execution and checkpoints, so a run survives a crash and resumes where it stopped. Human approval in the middle of a run. Retries, budgets and timeouts. Tracing what an agent did, after the fact. Maester's autonomous monitoring is where this lands.
-- **Graph databases.** FalkorDB and Cypher, graph RAG, and when a graph answers what a vector index can't. Citadel was the first step.
-- **Vectors.** HNSW tuning, half-precision embeddings, hybrid search and reranking, and keeping an index in step with the model that embedded it.
+- **Long-running agents in production.** I run agents as durable jobs: LangGraph runs checkpointed in Postgres, so a run survives a crash and resumes where it stopped. Human approval gates in the middle of a run. Background jobs over a queue with idempotency keys and live progress over SSE. Retries, model-call budgets and timeouts. Agents never write straight to the system of record. Maester's autonomous monitoring is designed around the same pattern.
+- **Graph databases.** FalkorDB and Cypher in Citadel: a graph per company, reviewed read-only queries with timeouts, and graph RAG whose answers cite the nodes they came from. I use a graph where the question is about relationships that a vector index can't follow.
+- **Vectors.** pgvector HNSW over half-precision embeddings, hybrid search that fuses vector and full-text rankings, and an index that refuses queries from any model other than the one that built it.
 
 ## 🐙 GitHub
 
