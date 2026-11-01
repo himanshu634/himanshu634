@@ -27,7 +27,7 @@ TypeScript, Hono, Drizzle, Zod, SvelteKit, Python, LangGraph, Postgres + pgvecto
 The thread through all of it: agents you can trust with real data.
 
 - **[Citadel](https://github.com/himanshu634/citadel)**: a company brain on FalkorDB. Graph RAG with multi-agent memory, 22 reviewed Cypher tools, and a grounding check that rejects any citation the agent never saw. When the graph can't answer, a Keeper agent researches the gap and writes the fix back. Built in 3 days for Graph Hacks (FalkorDB × WeMakeDevs); passes 119 of 120 graded eval runs.
-- **[Insider](https://github.com/himanshu634/Insider)**: turns trader WhatsApp groups into clean, comparable mandi prices and a daily brief for commodity buyers. Gujarati and English.
+- **[Insider](https://github.com/himanshu634/Insider)**: no official source publishes live commodity prices. They move through commodity traders' WhatsApp groups, as scattered Gujarati and English messages. Insider reads those groups and turns them into clean, comparable mandi prices and a daily brief, so a buyer can see the price gap between mandis and act on the arbitrage first.
 - **Claude Code** is how I build: skill libraries, reviewer subagents, hooks. Side quest: **Tank**, a macOS menu bar app that moves Claude Code sessions between accounts (private for now).
 
 ## 📚 Learning now
