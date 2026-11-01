@@ -1,90 +1,50 @@
-<!--
-BEFORE PUBLISHING
-1. Replace YOUR-HANDLE in the LinkedIn link at the bottom.
-2. Read the Maester and Bull Agritech sections and swap general phrasing for specifics where you can.
-3. In GitHub profile settings, change company from "Genuin Inc." to "Bull Agritech"
-   and fix the location typo ("Ahemdabad" -> "Ahmedabad").
-HTML comments like this one do not render on GitHub, so you can leave them in.
--->
-
 # Hi, I'm Himanshu 👋
 
-**Full-stack & AI engineer building software for money and markets.**
+I build AI agents and the software around them. This is where I experiment: document AI over financial filings, graph memory for agents, and agents that keep running long after you close the tab.
 
-Software engineer in Ahmedabad, India. I started on the frontend and worked down through backend, data and Rust. Now I build LLM agents, mostly for finance and markets.
+## 📈 Maester
 
-## Now
+**[Maester](https://github.com/himanshu634/maester)** is my main project: an open-source portfolio manager for long-term investors, India-first and self-hostable. It watches your holdings, filings and prices, and tells you which decision is due, with the evidence behind it.
 
-- 📈 **Maester**: an AI-driven portfolio risk management platform. Details below.
-- 🏢 **Bull Agritech**: engineer at a seed-stage agritech in Ahmedabad. Agents that run our lead pipeline today, and Koshi, an AI product for agro retailers, next. Details below.
-- 🦀 **Rust**: systems programming through CLI tools, to get comfortable with ownership, lifetimes and code where latency matters.
-- 🧠 **AI systems**: multi-agent orchestration, RAG pipelines and vector databases. Most of this feeds Maester and the agents we run at Bull Agritech.
+One rule runs through it: **the model reads, code calculates, and every number cites its source.**
 
-<!--
-MAESTER: this section is written from your own description of the project.
-Fintech readers respond to specifics (data sources, which risk measures, how many
-agents, what ships next), so replace general phrasing with concrete details wherever
-you can. The third bullet is my suggestion of what a finance audience looks for;
-keep it only if it reflects work you've done.
--->
+What's under the hood:
 
-## Maester
+- **Document AI over annual reports.** Docling and RapidOCR turn report PDFs into searchable chunks. XBRL filings are parsed alongside, and each filing's PDF and XBRL stay paired.
+- **LangGraph extraction.** Finds the statement pages, fans out one branch per statement with `Send`, then loops extract → deterministic arithmetic check → targeted correction. Retries, a model-call budget, and bad corrections get rejected. Claude with structured outputs.
+- **Hybrid RAG.** pgvector HNSW over `halfvec(1024)` plus Postgres full-text search, fused with reciprocal rank fusion. A gate refuses queries when the embedding service serves a different model than the one the index was built with.
+- **Provenance on every figure.** The filing, page, unit, period and reporting basis. Missing data shows as unknown, never as zero.
+- **Evals.** `maester-eval` runs offline with dev and held-out splits. On held-out banks: 1,521 statement-sum checks across 65 filings, none failed.
+- **MCP server.** Seven typed, read-only tools, so AI assistants answer from your filings with cited figures.
+- **Data.** A 4,675-file BSE filings corpus (13 GB of PDFs and XBRL), plus read-only Zerodha holdings.
 
-Maester reads a portfolio as a whole and answers the questions most tools skip: how good is this portfolio, where is the risk, and what in the market right now should change my view of it. Analysis runs through AI-driven insights rather than a fixed set of screens.
+**Next:** named, versioned calculations (a margin is a calculation you can inspect, never a model's arithmetic), then return tracking, then autonomous monitoring that suggests and explains but never trades.
 
-What I'm working through:
+TypeScript, Hono, Drizzle, Zod, SvelteKit, Python, LangGraph, Postgres + pgvector. AGPL, pre-alpha, built in public.
 
-- **Multi-agent orchestration.** Splitting analysis across specialised agents with narrow jobs instead of one giant prompt, then coordinating their output into a single view.
-- **RAG over market context.** Retrieval over documents and market data with PostgreSQL + pgvector, so the model reasons from sources rather than from training data.
-- **Keeping the output honest.** Grounding, structured outputs and guardrails. In finance a confident wrong number costs more than no number.
+## 🤖 AI agents and other experiments
 
-Stack: TypeScript, Next.js, Node.js, PostgreSQL + pgvector, Python for the analysis side.
-<!-- Confirm this stack line matches Maester. Remove Python if it isn't in there. -->
+The thread through all of it: agents you can trust with real data.
 
-Private while I get the core right. Progress notes go on X.
+- **[Citadel](https://github.com/himanshu634/citadel)**: a company brain on FalkorDB. Graph RAG with multi-agent memory, 22 reviewed Cypher tools, and a grounding check that rejects any citation the agent never saw. When the graph can't answer, a Keeper agent researches the gap and writes the fix back. Built in 3 days for Graph Hacks (FalkorDB × WeMakeDevs); passes 119 of 120 graded eval runs.
+- **[Insider](https://github.com/himanshu634/Insider)**: no official source publishes live commodity prices. They move through commodity traders' WhatsApp groups, as scattered Gujarati and English messages. Insider reads those groups and turns them into clean, comparable mandi prices and a daily brief, so a buyer can see the price gap between mandis and act on the arbitrage first.
+- **Claude Code** is how I build: skill libraries, reviewer subagents, hooks. Side quest: **Tank**, a macOS menu bar app that moves Claude Code sessions between accounts (private for now).
 
-<!--
-BULL AGRITECH: written from your description. Two places where a specific will land
-better than a general sentence: (1) name what each CRM agent does, e.g. qualifies,
-follows up, scores, schedules; (2) say where Koshi's insights come from, e.g. sales
-history, inventory, crop calendars. Also check that the "seeds, fertiliser and crop
-protection" gloss matches who Koshi serves, and add what you personally own.
-The "over 6,000 farmers" figure comes from a Jan 2025 press piece; update or remove it.
--->
+## 🛠️ What I go deep on
 
-## Bull Agritech
+- **Long-running agents in production.** I run agents as durable jobs: LangGraph runs checkpointed in Postgres, so a run survives a crash and resumes where it stopped. Human approval gates in the middle of a run. Background jobs over a queue with idempotency keys and live progress over SSE. Retries, model-call budgets and timeouts. Agents never write straight to the system of record. Maester's autonomous monitoring is designed around the same pattern.
+- **Graph databases.** FalkorDB and Cypher in Citadel: a graph per company, reviewed read-only queries with timeouts, and graph RAG whose answers cite the nodes they came from. I use a graph where the question is about relationships that a vector index can't follow.
+- **Vectors.** pgvector HNSW over half-precision embeddings, hybrid search that fuses vector and full-text rankings, and an index that refuses queries from any model other than the one that built it.
 
-Seed-stage agritech in Ahmedabad. Small team, so I work across the whole product, from the UI down to the database.
+## 🐙 GitHub
 
-What we're building:
-
-- **The supply-chain platform.** Connects farmers directly to commodity processors and handles price discovery, logistics, quality checks and payment protection in between. Over 6,000 farmers sell through it instead of their local APMC.
-- **An agent-run CRM.** Our internal CRM, where multiple agents, each with its own job, manage the lead pipeline.
-- **Koshi.** Where we're headed next: an AI application for agro retailers, the shops that sell farmers their seeds, fertiliser and crop protection. Koshi turns the shop into an AI-insight-driven business, so the retailer catches every upsell opportunity.
-
-## Stack
-
-| Area | What I use |
-|---|---|
-| **Languages** | TypeScript, Rust, Python, JavaScript |
-| **Frontend** | React, Next.js, Tailwind CSS, Zustand / Redux |
-| **Backend & data** | Node.js, Express, PostgreSQL, Supabase, pgvector |
-| **AI** | LLM integrations, RAG pipelines, multi-agent orchestration, vector search |
-| **Practice** | System architecture, REST / GraphQL API design, monorepos |
-
-<!-- Optional: apmc_management (Dart) fits the "markets" thread if you're happy showing it. -->
-
-## GitHub
+Open source: I wrote the Trino connector for [WrenAI](https://github.com/Canner/WrenAI) and [wren-engine](https://github.com/Canner/wren-engine), and presented it on the Trino Community Broadcast (2024).
 
 <p align="left">
-  <img src="https://github-readme-stats.vercel.app/api?username=himanshu634&show_icons=true&theme=radical&hide_border=true" alt="Himanshu's GitHub stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=himanshu634&layout=compact&theme=radical&hide_border=true" alt="Top languages" />
+  <img src="https://github-readme-stats.vercel.app/api?username=himanshu634&show_icons=true&hide_border=true" alt="Himanshu's GitHub stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=himanshu634&layout=compact&hide_border=true" alt="Top languages" />
 </p>
 
-## Contact
+## 📫 Say hi
 
-If you're building something in markets, trading or fintech and need an engineer who can own a product end to end, my DMs are open.
-
-- **X:** [@himanshu_btw](https://twitter.com/himanshu_btw)
-- **LinkedIn:** [linkedin.com/in/YOUR-HANDLE](https://www.linkedin.com/in/himanshu-mendapara/) <!-- replace YOUR-HANDLE before publishing -->
-- **Email:** [himanshumendapra@gmail.com](mailto:himanshumendapra@gmail.com)
+[builtbyhimanshu.com](https://builtbyhimanshu.com) · [LinkedIn](https://www.linkedin.com/in/himanshu-mendapara/) · [X](https://x.com/himanshu_btw) · [Email](mailto:himanshumendapra@gmail.com)
